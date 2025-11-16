@@ -5,6 +5,43 @@ single domain Stoner-Wohlfarth grains.
 
 # Compilation
 
+## Windows
+
+Anthony Pivarunas, in the year of our lord 2025, managed to compile this on Windows. The utilities used were
+CMake ([https://cmake.org](https://cmake.org)) crossplatform make utility (minimum version 3.17).  Additionally
+the Boost ([https://boost.org](https://boost.org)) library with `program-options` was compiled and available on 
+the build system. I specifically used Boost 1.89.0, and the Windows binary `boost_1_89_0-msvc-14.3-64.exe`. A final
+necessity is Visual Studio, with C++ development option.
+
+The tricky things:
+
+1. One has to edit the `CMakeLists.txt` file in the main downloaded directory and change the line referencing `find_package`, like so:
+
+`find_package(Boost CONFIG REQUIRED)`
+
+2. Once you've Configured and Generated (in the CMake GUI), you open the project in Visual Studio. It will throw errors, specifically
+   being unable to find first some boost `.hpp` files and after that is fixed, a boost `.lib` file. How do you fix that, you ask? Well,
+   by adding the right file paths.
+
+   For the .hpp files, right-click on "cooling (Visual Studio 2022)" in the "Solution Explorer" then on "C/C++" then "General" and add the boost root folder to the "Additional Include Directories".
+   For the .lib file, almost the same process, but go to "Linker" then "General" then add folder with the lib file to "Additional Library Directories".
+
+Voila.
+
+I hope this helps someone else.
+
+## Usage (Windows, AFP)
+
+The code, at least for me, ended up on a `src_cmdline\cooling\Release`folder.
+
+Code did not run with command:
+
+`cooling model.json --real-run`
+
+but seemed to with:
+
+`cooling model.json`
+
 ## Linux/Unix.
 This code can be compiled on linux (specifically Ubuntu version 20.04.2 LTS)
 using the CMake ([https://cmake.org](https://cmake.org)) crossplatform make
