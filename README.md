@@ -36,11 +36,11 @@ The code, at least for me, ended up on a `src_cmdline\cooling\Release`folder.
 
 Code did not run with command:
 
-`cooling model.json --real-run`
+`cooling model_1.json --real-run`
 
-but seemed to with:
+but seemed to exhibit the example with:
 
-`cooling model.json`
+`cooling model_1.json`
 
 ## Linux/Unix.
 This code can be compiled on linux (specifically Ubuntu version 20.04.2 LTS)
